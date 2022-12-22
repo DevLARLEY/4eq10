@@ -24,4 +24,4 @@ A B C D: The Numbers
 ```
 
 Use the given symbols to set whether given operators should be excluded from the calculation.
-§ stands for brackets.
+§ stands for brackets. If more than one is used, each one has to be seperated using "::".
