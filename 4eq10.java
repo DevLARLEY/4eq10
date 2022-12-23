@@ -17,14 +17,11 @@ class FourEQten {
         String[] startARRAY = null;
         String start = null;
         if(args.length < 1){
-           //no args
         }else if(args.length == 1){
-            //normal
             startARGS = args[0];
             startARRAY = startARGS.split("::");
             start = startARRAY[0] + "#" + startARRAY[1] + "#" + startARRAY[2] + "#" + startARRAY[3];
         }else if(args.length > 1){
-            //exclude
             startARGS = args[0];
             startARRAY = startARGS.split("::");
             start = startARRAY[0] + "#" + startARRAY[1] + "#" + startARRAY[2] + "#" + startARRAY[3];
@@ -172,37 +169,37 @@ class FourEQten {
                                         case 0:
                                             break;
                                         case 1:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = "(" + start.substring(0, 3) + ")" + start.substring(3, 4) + "(" + start.substring(4, 7) + ")";
                                                 break;
                                             }
                                         case 2:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = start.substring(0, 6) + start.substring(7, 10);
                                                 break;
                                             }
                                         case 3:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = start.substring(1, 4) + start.substring(5, 6) + "(" + start.substring(6, 9) + ")";
                                                 break;
                                             }
                                         case 4:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = start.substring(0, 2) + "(" + start.substring(2, 4) + start.substring(5, 6) + ")" + start.substring(6, 8);
                                                 break;
                                             }
                                         case 5:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = start.substring(0, 6) + start.substring(7, 9) + ")";
                                                 break;
                                             }
                                         case 6:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = "(" + start.substring(0, 2) + start.substring(3, 6) + ")" + start.substring(6, 8);
                                                 break;
                                             }
                                         case 7:
-                                            if(!exclude.contains("§")){
+                                            if(!exclude.contains("X")){
                                                 start = start.substring(1, 6) + start.substring(7, 9);
                                                 break;
                                             }
@@ -225,7 +222,7 @@ class FourEQten {
                 } 
             }
         }else{
-            System.out.println("Missing Arguments! Correct usage: FourEQten A::B::C::D [OPTIONAL: Exclude operators: +::-::*::/::§]");
+            System.out.println("Missing Arguments! Correct usage: FourEQten A::B::C::D [OPTIONAL: Exclude operators: +::-::*::/::X]");
         }
     }
 }
