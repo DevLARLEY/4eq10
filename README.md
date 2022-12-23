@@ -2,7 +2,7 @@
 Have you ever heard of the App 4=10? If you have, here is a solver if your get stuck but dont want to use a hint.
 
 # Requirements
-Java 14 or lower
+Java 14 or lower. 
 Please note that when compiling the source file, the same Java version must be used.
 
 # Compiling 
