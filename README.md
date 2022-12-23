@@ -14,7 +14,7 @@ javac 4eq10.java
 # Running
 
 ```sh
-java FourEQten A::B::C::D [+::-::*::/::§]
+java FourEQten A::B::C::D [+::-::*::/::X]
 ```
 
 #### Required
@@ -24,8 +24,8 @@ A B C D: The Numbers
 #### Optional
 
 ```sh
-+ - * / §
++ - * / X
 ```
 
 Use the given symbols to set whether given operators should be excluded from the calculation.
-§ stands for brackets. If more than one is used, each one has to be seperated using "::".
+X stands for brackets. If more than one is used, each one has to be seperated using "::".
