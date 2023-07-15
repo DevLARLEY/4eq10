@@ -2,7 +2,7 @@
 Have you ever heard of the App 4=10? If you have, here is a solver if your get stuck but dont want to use a hint.
 
 # Requirements
-Java 14 or lower. 
+JDK 14.0.2 (Not working on JDK 11, 17)
 Please note that when compiling the source file, the same Java version must be used to run the program.
 
 # Compiling 
@@ -14,7 +14,7 @@ javac 4eq10.java
 # Running
 
 ```sh
-java FourEQten A::B::C::D [+::-::*::/::X]
+java FourEQten ABCD [+-*/X]
 ```
 
 #### Required
