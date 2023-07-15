@@ -1,44 +1,44 @@
 import javax.script.ScriptEngineManager;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-class FourEQten {
-    public static void main(String[] args) throws ScriptException {
-        ArrayList solutionList = new ArrayList<>();
-        solutionList.clear();
+public class fourEQten {
 
-        String excludeARGS = null;
-        String[] excludeARRAY = null;
-        String exclude = null;
-        String startARGS = null;
-        String[] startARRAY = null;
+    public static ScriptEngineManager m = new ScriptEngineManager();
+    public static ScriptEngine p = m.getEngineByName("js");
+    public static int k(String s, int a){if(s.charAt(a)!='(')return -1;
+        Stack<Integer> st=new Stack<>();for(int i = a; i<s.length(); i++){
+            if(s.charAt(i)=='('){st.push((int)s.charAt(i));}else if(s.charAt(i)==')'){st.pop();if(st.empty())return i;}}return -1;}
+    public static String rrb(String s) throws ScriptException { /* By github.com/DevLARLEY on 2023/7/15 */
+        int j=0;String d=s;try{p.eval(s);}catch(ScriptException x){return null;}int r=d.length()-d.replace("(","").replace(")","").length();
+        for(int b=0;b<r;b++){int o=0;int c=0;for(int a=0;a<s.length();a++){if(j>a)continue;if(s.charAt(a)=='('){o=a;c=k(s,a);break;}}
+            String m=s;if(o<j||m.length()==m.replace("(","").replace(")","").length()){break;}
+            String e=s.substring(0,o)+s.substring(o+1);String f=e.substring(0,c-1)+e.substring(c);
+            if(p.eval(s).toString().equals(p.eval(f).toString())){s=f;}else{j++;}}return s;
+    }
+    public static void main(String[] args) throws ScriptException {
+        ArrayList<String> sols = new ArrayList<>();
+
+        String exclude = "";
+        String[] arr1;
         String start = null;
-        if(args.length < 1){
-        }else if(args.length == 1){
-            startARGS = args[0];
-            startARRAY = startARGS.split("::");
-            start = startARRAY[0] + "#" + startARRAY[1] + "#" + startARRAY[2] + "#" + startARRAY[3];
-        }else if(args.length > 1){
-            startARGS = args[0];
-            startARRAY = startARGS.split("::");
-            start = startARRAY[0] + "#" + startARRAY[1] + "#" + startARRAY[2] + "#" + startARRAY[3];
-            excludeARGS = args[1];
-            excludeARRAY = excludeARGS.split("::");
-            exclude = "";
-            for(int i = 0; i < excludeARRAY.length; i++){
-                exclude = exclude + excludeARRAY[i] + " ";
+        if(args.length >= 1) {
+            arr1 = args[0].split("");
+            start = arr1[0] + "." + arr1[1] + "." + arr1[2] + "." + arr1[3];
+            if(args.length > 1) {
+                arr1 = args[0].split("");
+                start = arr1[0] + "." + arr1[1] + "." + arr1[2] + "." + arr1[3];
+                exclude = args[1];
             }
         }
-        
-        if(exclude == null){
-            exclude = "";
-        }
-        ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("js");
+
+        int count=0;
         if(start != null){
+            long t1= System.nanoTime();
             for(int a = 0; a < 4; a++){
                 for(int b = 0; b < 4; b++){
                     switch (a) {
@@ -93,7 +93,7 @@ class FourEQten {
                                     start = start.substring(0, 4) + start.substring(6, start.length()) + start.substring(5, 6) + start.substring(4, 5);
                                     break;
                             }
-                        break;
+                            break;
                     }
                     for(int e = 0; e < 4; e++){
                         switch (e) {
@@ -204,25 +204,28 @@ class FourEQten {
                                                 break;
                                             }
                                     }
-                                    String sol = engine.eval(start).toString();
+                                    String sol = p.eval(start).toString();
                                     if(sol.contains("NaN") || sol.contains("Infinity")){
                                         sol = "0";
                                     }
-                                    Double solutuo = Double.parseDouble(sol);
-                                    if(solutuo == 10){
-                                        if(!solutionList.contains(start)){
-                                            solutionList.add(start);
-                                            System.out.println("SOLUTION FOUND [ " + start + " ]");
+                                    double sol2 = Double.parseDouble(sol);
+                                    if(sol2 == 10){
+                                        String r = rrb(start);
+                                        if(!sols.contains(r)){
+                                            count++;
+                                            sols.add(start);
+                                            System.out.println("Solution Found --> [ " + start + " ]");
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                } 
+                }
             }
+            System.out.println("Found " + count + "/8192 solutions in " + ((System.nanoTime()-t1)/1000000) + "ms.");
         }else{
-            System.out.println("Missing Arguments! Correct usage: FourEQten A::B::C::D [OPTIONAL: Exclude operators: +::-::*::/::X]");
+            System.out.println("Missing Arguments! Correct usage: FourEQten ABCD [OPTIONAL: Exclude operators: +-*/X]");
         }
     }
 }
